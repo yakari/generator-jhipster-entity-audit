@@ -1,0 +1,42 @@
+{
+    "entityAudit": {
+        "home": {
+            "title": "Auditoría de Entidades",
+            "filter": "Filtro",
+            "entityOrTable": "Entidad/Tabla",
+            "limitTo": "Límite hasta",
+            "loadChangeList": "Cargar Lista de Cambios"
+        },
+        "result": {
+            "showInfo": "Último <strong>{{ limit }}</strong> Cambios para <strong>{{ entity }}</strong>",
+            "searchFieldLabel": "Filtro:",
+            "globalFilter": "global filter",
+            "entityIdFilter": "entity id filter",
+            "tableHeader": {
+                "entityId": "Entidad ID",
+                "action": "Acción",
+                "version": "Versión",
+                "value": "Valor",
+                "modifiedDate": "Fecha de Modificación",
+                "modifiedBy": "Modificado por"
+            },
+            "tableBody": {
+                "field": "Campo",
+                "value": "Valor",
+                "viewDetails": "Ver detalles de auditoría de cambios"
+            },
+            "noDataFound": "No se encontraron registros para los filtros",
+            "firstAuditEntry": "No hay versión previa disponible para esta entrada\nEste es el primer registro de auditoría para este objeto"
+        },
+        "detail": {
+            "close": "Cerrar",
+            "title": "Detalle de auditorias",
+            "action": "{{action}} acción fue realizada en los siguientes registros",
+            "old": "Valor Antiguo/Removido",
+            "new": "Valor Nuevo/Agregado",
+            "changedFields": "Campos Cambiados",
+            "allFields": "Todos los Campos",
+            "done": "Realizado"
+        }
+    }
+}
