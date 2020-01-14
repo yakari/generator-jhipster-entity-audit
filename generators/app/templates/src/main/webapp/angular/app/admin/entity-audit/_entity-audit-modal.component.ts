@@ -36,21 +36,21 @@ import { EntityAuditEvent } from './entity-audit-event.model';
     `]
 })
 export class EntityAuditModalComponent {
-    action: string;
-    left: string;
-    right: string;
+    action?: string;
+    left?: string;
+    right?: string;
 
     constructor(
         private service: EntityAuditService,
         public activeModal: NgbActiveModal
     ) {}
 
-    openChange(audit: EntityAuditEvent) {
+    openChange(audit: EntityAuditEvent): void {
         this.service.getPrevVersion(
-            audit.entityType, audit.entityId, audit.commitVersion
+            audit.entityType!, audit.entityId!, audit.commitVersion!
         ).subscribe(res => {
-            const data: EntityAuditEvent = res.body;
-            const previousVersion = JSON.stringify(JSON.parse(data.entityValue), null, 2);
+            const data: EntityAuditEvent = res.body!;
+            const previousVersion = JSON.stringify(JSON.parse(data.entityValue!), null, 2);
             const currentVersion = JSON.stringify(audit.entityValue, null, 2);
 
             this.action = audit.action;

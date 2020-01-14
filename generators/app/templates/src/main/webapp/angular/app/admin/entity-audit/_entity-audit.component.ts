@@ -17,14 +17,14 @@ import { EntityAuditModalComponent } from './entity-audit-modal.component';
     `]
 })
 export class EntityAuditComponent implements OnInit {
-    audits: EntityAuditEvent[];
+    audits?: EntityAuditEvent[];
     entities: string[] = [];
-    selectedEntity: string;
+    selectedEntity?: string;
     limits = [25, 50, 100, 200];
     selectedLimit = this.limits[0];
     loading = false;
     filterEntityId = '';
-    orderProp: string;
+    orderProp?: string;
     reverse = false;
 
     constructor(
@@ -33,31 +33,31 @@ export class EntityAuditComponent implements OnInit {
         private alertService: JhiAlertService
     ) {}
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.service.getAllAudited().subscribe(entities => {
             this.entities = entities;
         });
     }
 
-    loadChanges() {
+    loadChanges(): void {
         this.loading = true;
-        this.service.findByEntity(this.selectedEntity, this.selectedLimit)
+        this.service.findByEntity(this.selectedEntity!, this.selectedLimit)
             .subscribe(res => {
                 const data = res.body;
-                this.audits = data.map((it: EntityAuditEvent) => {
-                    it.entityValue = JSON.parse(it.entityValue);
+                this.audits = data!.map((it: EntityAuditEvent) => {
+                    it.entityValue = JSON.parse(it.entityValue!);
                     return it;
                 });
                 this.loading = false;
             }, err => this.loading = false);
     }
 
-    trackId(index: number, item: EntityAuditEvent) {
+    trackId(index: number, item: EntityAuditEvent): any {
         return item.id;
     }
 
-    openChange(audit: EntityAuditEvent) {
-        if (audit.commitVersion < 2) {
+    openChange(audit: EntityAuditEvent): void {
+        if (audit.commitVersion! < 2) {
             <%_ if (enableTranslation) { _%>
             this.alertService.warning('entityAudit.result.firstAuditEntry');
             <%_ } else { _%>
